@@ -1,0 +1,93 @@
+html,
+body,
+#root {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+ul {
+	padding: 0;
+}
+li {
+	list-style-type: none;
+}
+
+img {
+	width: 70px;
+}
+.CardsBoard--wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 50px;
+	/* height: 100%; */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.card--container {
+	position: relative;
+	width: 75px;
+	height: 115px;
+}
+.card {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: all 0.5s ease;
+}
+
+/* .card:hover {
+	transform: rotateY(180deg);
+} */
+.front {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+.back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+}
+
+.discovered-pair {
+	animation-name: pair_found;
+	animation-duration: 0.5s;
+}
+
+@keyframes pair_found {
+	0% {
+		transform: scale(1);
+	}
+	17% {
+		transform: scale(1.15);
+	}
+	34% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.15);
+	}
+	67% {
+		transform: scale(1);
+	}
+	83% {
+		transform: scale(1.15);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
