@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
+.gitignore
 src/img/player_cards
