@@ -32,6 +32,6 @@ class CardsBoard extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	cards: state.cards,
+	cards: state.cards.cardsSet,
 });
 export default connect(mapStateToProps)(CardsBoard);

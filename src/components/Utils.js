@@ -1,6 +1,6 @@
 // black (spades ♠), red (hearts ♥), blue (diamonds ♦) and green (clubs ♣).
 // S, H, D, C
-const player_cards = [
+const _52Cards = [
 	"AS",
 	"AH",
 	"AD",
@@ -54,13 +54,47 @@ const player_cards = [
 	"KD",
 	"KC",
 ];
+const _32Cards = [
+	"AS",
+	"AH",
+	"AD",
+	"AC",
+	"7S",
+	"7H",
+	"7D",
+	"7C",
+	"8S",
+	"8H",
+	"8D",
+	"8C",
+	"9S",
+	"9H",
+	"9D",
+	"9C",
+	"10S",
+	"10H",
+	"10D",
+	"10C",
+	"JS",
+	"JH",
+	"JD",
+	"JC",
+	"QS",
+	"QH",
+	"QD",
+	"QC",
+	"KS",
+	"KH",
+	"KD",
+	"KC",
+];
+// export function getCard(player_cards) {
+// 	return Math.floor(Math.random() * _52Cards.length);
+// }
 
-export function getCard(player_cards) {
-	return Math.floor(Math.random() * player_cards.length);
-}
-
-export function getShuffledCards() {
-	const newCards = [...player_cards];
+export function getShuffledCards(num = 52) {
+	const cards = num === 52 ? _52Cards : _32Cards;
+	const newCards = [...cards];
 	newCards.sort(() => Math.random() - 0.5);
 	return newCards;
 }
