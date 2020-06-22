@@ -4,6 +4,20 @@ export const DISCOVERED_PAIR = "DISCOVERED_PAIR";
 export const NEW_GAME = "NEW_GAME";
 export const CHANGE_TO_32 = "CHANGE_TO_32";
 export const CHANGE_TO_52 = "CHANGE_TO_52";
+export const TOGGLE_HIDE_CARD = "TOGGLE_HIDE_CARD";
+export const TOGGLE_PLAY = "TOGGLE_PLAY";
+
+export function toggleHideCard() {
+	return {
+		type: TOGGLE_HIDE_CARD,
+	};
+}
+
+export function togglePlay() {
+	return {
+		type: TOGGLE_PLAY,
+	};
+}
 
 export function flipCard(id) {
 	return {
@@ -41,22 +55,3 @@ export function changeTo52() {
 		totalCard: 52,
 	};
 }
-
-// FLIPPED CARDS
-// [
-// 	{
-// 		id:"_AC"
-// 	},
-// 	{
-// 		id:"_10C"
-// 	}
-// ]
-// Pair discovered
-// [
-// 	{
-// 		id:"_AC"
-// 	},
-// 	{
-// 		id:"_10C"
-// 	}
-// ]

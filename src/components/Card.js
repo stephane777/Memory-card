@@ -59,11 +59,11 @@ class Card extends React.Component {
 		// back img is the card value shown up
 		event.preventDefault();
 
-		const { dispatch, flipped } = this.props;
+		const { dispatch, flipped, control } = this.props;
 		const isBackCardClicked = Array.from(event.target.classList).includes(
 			"backimg"
 		);
-		if (flipped.length <= 1 && !isBackCardClicked) {
+		if (flipped.length <= 1 && !isBackCardClicked && control.play_game) {
 			const id = event.target.parentNode.parentNode.getAttribute("id").slice(1);
 			dispatch(flipCard(id));
 		}
@@ -119,10 +119,19 @@ class Card extends React.Component {
 	}
 
 	render() {
-		const { id, imageCard } = this.props;
-		// return <img className="card" src={images["0"].default} alt="card" />;
+		const { id, imageCard, control, discovered } = this.props;
+		const hideDiscovered = control.hideDiscovered;
+		const discoveredArray = discovered.map((el) => el.id);
+		const isCardDiscovered = discoveredArray.includes(id.slice(1));
+		const styleHidden = {
+			visibility: "hidden",
+		};
+
 		return (
-			<div className="card--container">
+			<div
+				className="card--container"
+				style={isCardDiscovered && hideDiscovered ? styleHidden : null}
+			>
 				<div id={id} className="card">
 					<div className="front">
 						<img className="frontimg" src={cardBack} alt="Avatar" />
@@ -140,5 +149,6 @@ export default connect((state) => {
 	return {
 		flipped: state.flipped,
 		discovered: state.discovered,
+		control: state.control,
 	};
 })(Card);
