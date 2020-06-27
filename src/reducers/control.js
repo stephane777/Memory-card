@@ -13,7 +13,6 @@ const initialState = {
 	hideDiscovered: false,
 	cardsFlipped: 0,
 	pairsFound: 0,
-	timer: "00:00:00", // mm:ss:ms
 };
 
 export default function control(state = initialState, action) {
@@ -57,6 +56,7 @@ export default function control(state = initialState, action) {
 				cardsFlipped: 0,
 				pairsFound: 0,
 			};
+
 		default:
 			return state;
 	}

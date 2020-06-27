@@ -18,7 +18,7 @@ export default function cards(state = initialState, action) {
 		case NEW_GAME:
 			return {
 				...state,
-				cards: createCards(state.numOfCards),
+				cardsSet: createCards(state.numOfCards),
 			};
 		case CHANGE_TO_52:
 			return {

@@ -5,10 +5,13 @@ import {
 	newGame,
 	toggleHideCard,
 	togglePlay,
+	setTimerId,
+	timerIncrement,
 } from "../actions/cards";
 
 import { connect } from "react-redux";
 import { FaPlay, FaPause } from "react-icons/fa";
+import Timer from "./Timer";
 
 class ControlBoard extends React.Component {
 	handleChangeCardsSet = (event) => {
@@ -34,12 +37,33 @@ class ControlBoard extends React.Component {
 		const { dispatch } = this.props;
 		dispatch(toggleHideCard());
 	};
+	handleTimerIncrement = () => {
+		const { dispatch } = this.props;
+		dispatch(timerIncrement());
+	};
+	componentDidUpdate() {
+		const { dispatch } = this.props;
+		const { play_game } = this.props.control;
+		const { timerId } = this.props.timer;
+		console.log("should timer run: " + play_game);
+		if (play_game && !timerId) {
+			const timer = setInterval(this.handleTimerIncrement, 1000);
+			dispatch(setTimerId(timer));
+		} else if (!play_game && timerId) {
+			dispatch(setTimerId(0));
+			clearInterval(timerId);
+		}
+	}
+	componentWillUnmount() {
+		console.log("ControlBoard componentWillUnmount");
+	}
 	render() {
 		const {
 			play_game,
 			cardsFlipped,
 			pairsFound,
 			hideDiscovered,
+			timer,
 		} = this.props.control;
 		const { cards } = this.props;
 		return (
@@ -96,10 +120,7 @@ class ControlBoard extends React.Component {
 						<span>Pair(s) found : </span>
 						<span>{pairsFound}</span>
 					</div>
-					<div>
-						<span>Timer: </span>
-						<span>{this.props.timer}</span>
-					</div>
+					<Timer />
 				</div>
 			</div>
 		);
@@ -108,5 +129,6 @@ class ControlBoard extends React.Component {
 const mapStateToProps = (state) => ({
 	cards: state.cards,
 	control: state.control,
+	timer: state.timer,
 });
 export default connect(mapStateToProps)(ControlBoard);

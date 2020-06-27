@@ -6,7 +6,20 @@ export const CHANGE_TO_32 = "CHANGE_TO_32";
 export const CHANGE_TO_52 = "CHANGE_TO_52";
 export const TOGGLE_HIDE_CARD = "TOGGLE_HIDE_CARD";
 export const TOGGLE_PLAY = "TOGGLE_PLAY";
+export const TIMER_INCREMENT = "TIMER_INCREMENT";
+export const SET_TIMER_ID = "SET_TIMER_ID";
 
+export function setTimerId(id) {
+	return {
+		type: SET_TIMER_ID,
+		timerId: id,
+	};
+}
+export function timerIncrement() {
+	return {
+		type: TIMER_INCREMENT,
+	};
+}
 export function toggleHideCard() {
 	return {
 		type: TOGGLE_HIDE_CARD,
