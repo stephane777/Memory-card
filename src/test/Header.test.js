@@ -1,14 +1,11 @@
 import React from "react";
 import Header from "../components/Header";
-import { shallow } from "enzyme";
-import { TestScheduler } from "jest";
-// import cards from "../img/cards_cover/honor_heart-14.png";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-// it("should render an img with src", () => {
-// 	const wrapper = shallow(<Header />);
-// 	const image = wrapper.find("img").prop("src");
-
-// 	expect(image).toEqual(cards);
-// });
-
-Test("toto", () => {});
+describe("<Header />  render correctly", () => {
+	it("should display Memory Cards as a title", () => {
+		render(<Header />);
+		screen.debug();
+	});
+});
